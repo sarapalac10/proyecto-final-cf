@@ -37,7 +37,6 @@ const Anuncio = ({
                 </Link>
                 <div className={styles.tagsContainer}>
                     <p>{description}</p>
-
                     <span className={styles.tagLabel}>
                         Fecha y lugar del evento:
                         <span className={styles.tagValue}>{dayjs(event_info.date).format("DD/M/YYYY")} <strong>-</strong> {event_info.place}</span>

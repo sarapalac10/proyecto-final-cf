@@ -16,8 +16,6 @@ const Evento = async () => {
         event_author(name)
         `);
 
-    // console.log(data, 'data de eventos');
-
     if (error) {
         console.log('Error en evento:', error.message);
         return (
