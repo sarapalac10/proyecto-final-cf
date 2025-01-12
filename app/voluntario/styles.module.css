@@ -1,0 +1,95 @@
+.containerVoluntario {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f7f9fa;
+    font-family: 'Arial', sans-serif;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.containerVoluntario h1 {
+    font-size: 2rem;
+    color: #287385;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+
+.containerVoluntario p {
+    text-align: left;
+    color: #4e4e4e;
+    margin-bottom: 30px;
+}
+
+.containerVoluntario form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.containerVoluntario label {
+    font-weight: bold;
+    color: #333;
+}
+
+.containerVoluntario input,
+.containerVoluntario textarea {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.containerVoluntario textarea {
+    resize: vertical;
+}
+
+.containerVoluntario button {
+    background-color: #a5d3ae;
+    color: #287385;
+    border: 1px solid #3f6d48;
+    padding: 1rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.containerVoluntario button:hover {
+    background-color: #BBE6E4;
+    color: #287385;
+    border: 1px solid #87c493;
+}
+
+.voluntarioItem {
+    background-color: #e4f5f4;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 50px 20px;
+    border: 1px solid #87c493;
+}
+
+.voluntarioItem_content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+@media (min-width: 600px) {
+    .containerVoluntario .form-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .containerVoluntario .form-grid textarea {
+        grid-column: span 2;
+    }
+
+    .containerVoluntario button {
+        grid-column: span 2;
+        justify-self: center;
+    }
+}

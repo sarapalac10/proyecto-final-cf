@@ -132,3 +132,55 @@ export const signOutAction = async () => {
   await supabase.auth.signOut();
   return redirect("/sign-in");
 };
+
+export const createVolunteerAction = async (formData: FormData) => {
+  try {
+    const supabase = await createClient();
+
+    const { error } = await supabase.from('volunteer').insert({
+      name: formData.get('name'),
+      email: formData.get('email'),
+      edad: formData.get('edad'),
+      availability: formData.get('availability'),
+      skills: formData.get('skills'),
+      reason: formData.get('reason'),
+    });
+
+    if (error) {
+      console.log(error);
+      return false;
+    }
+
+    return true;
+
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export const updateVolunteerAction = async (formData: FormData) => {
+  try {
+    const supabase = await createClient();
+    const id = formData.get('id');
+
+    const { error } = await supabase.from('volunteer').update({
+      name: formData.get('name'),
+      email: formData.get('email'),
+      edad: Number(formData.get('edad')),
+      availability: formData.get('availability'),
+      skills: formData.get('skills'),
+      reason: formData.get('reason'),
+    }).eq('id', id);
+
+    if (error) {
+      console.log(error);
+      return false;
+    }
+
+    return true;
+
+  } catch (error) {
+    console.log(error);
+    return false;
+  }
+}
