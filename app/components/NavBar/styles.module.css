@@ -49,6 +49,17 @@
     background-color: #e8eaee;
 }
 
+.login {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.login img{
+    color: #287385;
+
+}
+
 @media (max-width: 768px) {
     .hamburger {
         display: flex;

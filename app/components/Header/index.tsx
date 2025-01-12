@@ -5,7 +5,6 @@ import styles from './styles.module.css';
 export default function Header() {
     return (
         <header className={styles.header}>
-            <h1>Hogar de paso Alegría Gatuna</h1>
             <Link href="/">
                 <Image
                     src="/images/logo_inicio_alegria.png"
@@ -16,6 +15,7 @@ export default function Header() {
                     style={{ width: '100%', height: 'auto' }}
                 />
             </Link>
+            <h1>Hogar de paso Alegría Gatuna</h1>
         </header>
     )
 }

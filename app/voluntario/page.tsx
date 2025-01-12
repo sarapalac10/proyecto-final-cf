@@ -57,13 +57,14 @@ const Voluntario = () => {
 
 
     const handleSubmit = async (formData: FormData) => {
-        alert('¡Gracias por querer ser voluntario! Pronto nos pondremos en contacto.');
 
         if (formValues.id === -1) {
             // usuario nuevo
             await createVolunteerAction(formData);
+            alert('¡Gracias por querer ser voluntario! Pronto nos pondremos en contacto.');
 
-            // si es true actualizar, sino mandar un error
+
+            // si es true crear, sino mandar un error
         } else {
             // usuario existente
             await updateVolunteerAction(formData);

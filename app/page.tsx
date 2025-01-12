@@ -1,6 +1,5 @@
 'use client'
 import styles from "./page.module.css";
-import Voluntario from "./voluntario/page";
 import FirstComponent from "./components/FirstComponent";
 import Image from 'next/image';
 import Link from "next/link";
@@ -11,14 +10,14 @@ const Home = () => {
       <main >
         {/* <FirstComponent /> */}
         <div className={styles.banner}>
-          {/* <Image
-            src="/images/image_banner.png"
+          <Image
+            src="/images/image_banner_2.png"
             alt="Banner home"
             width={0}
             height={0}
-            sizes="70vw"
-            style={{ width: '100%', height: 'auto' }}
-          /> */}
+            sizes="50vw"
+            style={{ width: '100%', height: '250px', objectFit: 'cover' }}
+          />
           <h1>Bienvenidos al Hogar de paso Alegría Gatuna</h1>
 
           <div className={styles.banner_content}>
@@ -26,7 +25,12 @@ const Home = () => {
             <Link href="/voluntario">
               <button className={styles.banner_button}>Conoce cómo ser voluntario</button>
             </Link>
-            {/* <Voluntario /> */}
+          </div>
+          <div className={styles.banner_content}>
+            <Link href="/evento">
+              <button className={styles.banner_button}>Conoce los eventos</button>
+            </Link>
+            <p>Conoce todos los eventos a los que puedes asistir y apoyar al hogar de paso Alegría Gatuna</p>
           </div>
         </div>
         <div className={styles.lista_adopcion}>

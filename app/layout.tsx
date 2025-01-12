@@ -9,6 +9,7 @@ import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import Link from "next/link";
 import "./globals.css";
+import Header from "./components/Header";
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -44,10 +45,8 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <main >
+            <Header />
             <NavBar />
-            <nav>
-              <Link href={"/"}>Inicio</Link>
-            </nav>
             <div>
               {children}
             </div>

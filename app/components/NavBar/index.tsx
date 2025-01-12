@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import styles from './styles.module.css';
+import Image from 'next/image';
 
 export default function NavBar() {
     const [isOpen, setIsOpen] = useState(false);
@@ -32,8 +33,12 @@ export default function NavBar() {
                 <li>
                     <Link href="/donacion">Donaciones</Link>
                 </li>
+
+            </ul>
+            <ul className={styles.navList}>
                 <li>
-                    <Link href="/blog">Blog</Link>
+                    <Link href={"/"}>Inicio</Link>
+                    <Link className={styles.login} href="/"> Iniciar sesión <Image src="/icons/icono_inicio_sesion.ico" alt="Ícono de login" width={20} height={20} color="#287385" /></Link>
                 </li>
             </ul>
         </nav>
