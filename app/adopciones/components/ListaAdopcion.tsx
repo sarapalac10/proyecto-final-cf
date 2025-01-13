@@ -2,16 +2,13 @@ import styles from './ListaAdopcion.module.css';
 import { createClient } from '@/utils/supabase/server';
 import Gato from './GatoItem';
 
-
 const ListaAdopcion = async () => {
     const supabase = await createClient();
 
     const { data: gatos, error: gatosError } = await supabase.from('gatos').select();
 
-    console.log(gatos);
-
     if (gatosError) {
-        console.log('Error en evento:', gatosError.message);
+        console.log('Error en gatos:', gatosError.message);
         return (
             <p
                 style={{
@@ -23,7 +20,7 @@ const ListaAdopcion = async () => {
                     margin: '1rem'
                 }}
             >
-                Error al obtener los gatios del refugio Alegría Gatuna
+                Error al obtener los gatos del refugio Alegría Gatuna
             </p>
         );
     }

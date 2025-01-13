@@ -29,6 +29,12 @@
     margin: 0.75rem;
     font-weight: bold;
     color: #287385;
+    transition: color 0.3s ease;
+
+    &:hover {
+        color: #1a4b57;
+        text-decoration: underline;
+    }
 }
 
 .tagsContainer {

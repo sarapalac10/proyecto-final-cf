@@ -1,0 +1,28 @@
+.gato_header {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    background-color: #e1f0e4;
+}
+
+.gato_header h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #287385;
+}
+
+.gato_header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: left;
+}
+
+.gato_header nav a {
+    text-decoration: none;
+    color: #3f6d48;
+    font-weight: bold;
+}
+
+.gato_header nav a:hover {
+    color: #87c493;
+}

@@ -1,0 +1,45 @@
+.containerAcerca {
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+}
+
+.containerAcerca h1 {
+    color: #287385;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.containerAcerca h2 {
+    color: #87c493;
+    font-size: 1.8rem;
+    margin-top: 20px;
+}
+
+.containerAcerca h3 {
+    color: #87c493;
+    font-size: 1.8rem;
+}
+
+.containerAcerca p {
+    font-size: 1rem;
+    color: #4e4e4e;
+}
+
+.containerAcerca ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+.containerAcerca li {
+    font-size: 1rem;
+    color: #4e4e4e;
+}
+
+.containerAcerca .impact {
+    background-color: #e4f5f4;
+    padding: 15px;
+    border-left: 5px solid #00796b;
+    margin-top: 20px;
+}

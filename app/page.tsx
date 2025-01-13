@@ -2,7 +2,8 @@
 import styles from "./page.module.css";
 import Image from 'next/image';
 import Link from "next/link";
-import ListaAdopcion from "./adopciones/components/ListaAdopcion";
+import ListaAdopcion from "./components/ListaAdopcion";
+
 
 const Home = () => {
   return (
@@ -33,11 +34,13 @@ const Home = () => {
           </div>
         </div>
         <div className={styles.lista_adopcion}>
-          <h2>Conoce a tu nuevo mejor amigo</h2>
-          {/* Agregar acá las tarjetas de los gatos */}
-          <Link href="/adopciones">
-            <button className={styles.banner_button}>Conócelos a todos</button>
-          </Link>
+          <h2>Conoce al que podría ser tu nuevo mejor amigo</h2>
+          <div className={styles.adopcion_actions}>
+            <ListaAdopcion />
+            <Link href="/adopciones">
+              <button className={styles.adopcion_button}>Conoce a todos los gatitos y enamórate de ellos</button>
+            </Link>
+          </div>
         </div>
       </main>
     </>

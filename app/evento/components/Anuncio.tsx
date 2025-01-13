@@ -29,7 +29,9 @@ const Anuncio = ({
     return (
         <div className={styles.anuncio_container}>
             <div className={styles.anuncio_left}>
-                <img src={image} alt={title} />
+                <Link href={`/evento/${id}`}>
+                    <img src={image} alt={title} />
+                </Link>
             </div>
             <div className={styles.anuncio_right}>
                 <Link href={`/evento/${id}`}>

@@ -1,34 +1,35 @@
-
 .adoptionCard {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    justify-content: space-around;
     border: 1px solid #69B578;
     border-radius: 20px;
     padding: 10px;
-    margin: 10px;
+    margin: 1rem;
     background-color: #e4f5f4;
 }
 
 .adoptionCard__image {
-    border-radius: 20px;
+    width: 50%;
 }
 
 .adoptionCard__info {
-    margin-top: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 15px;
+    margin: 1rem;
 }
 
-.adoptionCard__name {
-    font-size: 20px;
+.adoptionCard__info h3 {
+    font-size: 30px;
     font-weight: bold;
+    color: #287385;
 }
 
-.adoptionCard__detail {
-    font-size: 16px;
+.adoptionCard__info p {
+    font-size: 20px;
     font-weight: normal;
 }
 
@@ -49,10 +50,4 @@
     background-color: #558b62;
     transform: scale(1.05);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-}
-
-.adoptionCard__button_disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-    background-color: #ccc;
 }
