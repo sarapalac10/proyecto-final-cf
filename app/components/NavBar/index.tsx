@@ -26,7 +26,7 @@ export default function NavBar() {
                 const { data: authUser, error } = await supabase.auth.getUser();
 
                 if (error) {
-                    throw new Error();
+                    throw new Error(error.message);
                 }
 
                 const { data: publicUser, error: publicError } = await supabase.from("users").select("*").eq("id", authUser.user.id).single();
@@ -62,7 +62,7 @@ export default function NavBar() {
                     <Link href="/adopcion">Adoptar</Link>
                 </li>
                 <li>
-                    <Link href="/donacion">Donaciones</Link>
+                    <Link href="/donaciones">Donaciones</Link>
                 </li>
 
             </ul>
@@ -75,7 +75,17 @@ export default function NavBar() {
                         </>
                     )}
                     {!user?.id && <a href="/sign-in">
-                        <span>Iniciar sesión <Image src="/icons/icono_inicio_sesion.ico" alt="Ícono de login" width={20} height={20} color="#287385" /></span>
+                        <span style={{ display: 'flex', alignItems: 'center' }}>
+                            Iniciar sesión
+                            <Image
+                                src="/icons/icono_inicio_sesion.ico"
+                                alt="Ícono de login"
+                                width={20}
+                                height={20}
+                                color="#287385"
+                                style={{ marginLeft: '4px' }}
+                            />
+                        </span>
                     </a>}
                 </li>
             </ul>
