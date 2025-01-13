@@ -59,7 +59,7 @@ export default function NavBar() {
                     <Link href="/evento">Eventos</Link>
                 </li>
                 <li>
-                    <Link href="/adopcion">Adoptar</Link>
+                    <Link href="/adopciones">Adoptar</Link>
                 </li>
                 <li>
                     <Link href="/donaciones">Donaciones</Link>

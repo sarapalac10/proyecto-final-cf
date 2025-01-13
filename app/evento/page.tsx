@@ -1,5 +1,4 @@
 import { createClient } from "@/utils/supabase/server";
-import styles from "./components/styles.module.css";
 import Anuncio from "./components/Anuncio";
 
 

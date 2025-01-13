@@ -1,22 +1,3 @@
-/* .adoptionList {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    justify-items: center;
-    align-items: center;
-    padding: 2rem;
-    background-color: rgb(244, 165, 165);
-} */
-
-.adoptionList {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    /* Ajusta el ancho mínimo de las tarjetas */
-    gap: 16px;
-    /* Espacio entre las tarjetas */
-    justify-items: center;
-    /* Centra las tarjetas en sus celdas */
-}
 
 .adoptionCard {
     display: flex;

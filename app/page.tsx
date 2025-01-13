@@ -1,14 +1,13 @@
 'use client'
 import styles from "./page.module.css";
-import FirstComponent from "./components/FirstComponent";
 import Image from 'next/image';
 import Link from "next/link";
+import ListaAdopcion from "./adopciones/components/ListaAdopcion";
 
 const Home = () => {
   return (
     <>
       <main >
-        {/* <FirstComponent /> */}
         <div className={styles.banner}>
           <Image
             src="/images/image_banner_2.png"
@@ -35,8 +34,10 @@ const Home = () => {
         </div>
         <div className={styles.lista_adopcion}>
           <h2>Conoce a tu nuevo mejor amigo</h2>
-          {/* <ListaAdopcion /> */}
-          <p>Lista de gatos</p>
+          {/* Agregar acá las tarjetas de los gatos */}
+          <Link href="/adopciones">
+            <button className={styles.banner_button}>Conócelos a todos</button>
+          </Link>
         </div>
       </main>
     </>
