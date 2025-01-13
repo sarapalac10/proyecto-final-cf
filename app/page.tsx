@@ -19,30 +19,34 @@ const Home = () => {
             style={{ width: '100%', height: '250px', objectFit: 'cover' }}
           />
           <h1>Bienvenidos al Hogar de paso Alegría Gatuna</h1>
+          <p>Somos una organización sin fines de lucro dedicada al cuidado de gatos abandonados y maltratados. Brindamos hogar temporal, atención médica y todo el amor que necesitan.</p>
 
-          <div className={styles.banner_content}>
-            <p>Somos una organización sin fines de lucro dedicada al cuidado de gatos abandonados y maltratados. Brindamos hogar temporal, atención médica y todo el amor que necesitan.</p>
+          <div className={styles.seccion_cta}>
             <Link href="/voluntario">
-              <button className={styles.banner_button}>Conoce cómo ser voluntario</button>
+              <h3>Ir a Voluntariado</h3>
             </Link>
+            <p>Descubre cómo tú también puedes ser voluntario y ayudar a los gatos en situación de abandono.</p>
           </div>
-          <div className={styles.banner_content}>
+
+          <div className={styles.seccion_cta}>
             <Link href="/evento">
-              <button className={styles.banner_button}>Conoce los eventos</button>
+              <h3>Ir a Eventos</h3>
             </Link>
             <p>Conoce todos los eventos a los que puedes asistir y apoyar al hogar de paso Alegría Gatuna</p>
           </div>
-        </div>
-        <div className={styles.lista_adopcion}>
-          <h2>Conoce al que podría ser tu nuevo mejor amigo</h2>
-          <div className={styles.adopcion_actions}>
-            <ListaAdopcion />
-            <Link href="/adopciones">
-              <button className={styles.adopcion_button}>Conoce a todos los gatitos y enamórate de ellos</button>
-            </Link>
+
+          <div className={styles.lista_adopcion}>
+            <h2>Encuentra al que podría ser tu nuevo mejor amigo</h2>
+            <div className={styles.adopcion_actions}>
+              <ListaAdopcion />
+              <Link href="/adopciones">
+                <button className={styles.adopcion_button}>Conoce a todos los gatitos y enamórate de ellos</button>
+              </Link>
+            </div>
           </div>
+
         </div>
-      </main>
+      </main >
     </>
   );
 }
