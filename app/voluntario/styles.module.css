@@ -15,6 +15,12 @@
     margin-bottom: 20px;
 }
 
+.impacto h2 {
+    font-size: 1.5rem;
+    color: #287385;
+    text-align: center;
+    margin-bottom: 20px;
+}
 
 .containerVoluntario p {
     text-align: left;
@@ -68,7 +74,6 @@
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     margin: 50px 20px;
-    border: 1px solid #87c493;
 }
 
 .voluntarioItem_content {

@@ -20,29 +20,70 @@ export default async function Signup(props: {
 
   return (
     <>
-      <form className="flex flex-col min-w-64 max-w-64 mx-auto">
-        <h1 className="text-2xl font-medium">Sign up</h1>
-        <p className="text-sm text text-foreground">
-          Already have an account?{" "}
-          <Link className="text-primary font-medium underline" href="/sign-in">
-            Sign in
-          </Link>
-        </p>
-        <div className="flex flex-col gap-2 [&>input]:mb-3 mt-8">
-          <Label htmlFor="email">Email</Label>
-          <Input name="email" placeholder="you@example.com" required />
-          <Label htmlFor="password">Password</Label>
-          <Input
-            type="password"
-            name="password"
-            placeholder="Your password"
-            minLength={6}
-            required
-          />
-          <SubmitButton formAction={signUpAction} pendingText="Signing up...">
-            Sign up
+      <form className="flex flex-col w-full max-w-sm mx-auto space-y-6 p-8">
+        <div className="space-y-2 text-center">
+          <h1 className="text-2xl font-bold tracking-tight text-green-500">Regístrate</h1>
+          <p className="text-sm text-muted-foreground">
+            ¿Ya tienes una cuenta?{" "}
+            <Link className="text-primary hover:text-primary/90 underline underline-offset-4" href="/sign-in">
+              Iniciar sesión
+            </Link>
+          </p>
+        </div>
+
+        <div className="space-y-4">
+          <div className="space-y-2">
+            <Label htmlFor="first_name">Nombre</Label>
+            <Input
+              name="first_name"
+              placeholder="Nombre"
+              className="w-full"
+              required
+            />
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="last_name">Apellido</Label>
+            <Input
+              name="last_name"
+              placeholder="Apellido"
+              className="w-full"
+              required
+            />
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="age">Edad</Label>
+            <Input
+              name="age"
+              placeholder="Edad"
+              className="w-full"
+              required
+            />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="email">Email</Label>
+            <Input name="email" placeholder="tu@email.com" required />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="password">Contraseña</Label>
+            <Input
+              type="password"
+              name="password"
+              placeholder="Tu contraseña"
+              minLength={6}
+              required
+            />
+          </div>
+          <SubmitButton
+            formAction={signUpAction}
+            pendingText="Registrando..."
+            className="w-full"
+          >
+            Regístrate
           </SubmitButton>
-          <FormMessage message={searchParams} />
+
+          <FormMessage message={searchParams} className="text-center" />
         </div>
       </form>
       <SmtpMessage />
