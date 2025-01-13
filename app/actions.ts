@@ -10,22 +10,41 @@ export const signUpAction = async (formData: FormData) => {
   const password = formData.get("password")?.toString();
   const supabase = await createClient();
   const origin = (await headers()).get("origin");
+  const first_name = formData.get("first_name")?.toString();
+  const last_name = formData.get("last_name")?.toString();
+  const age = Number(formData.get("age")?.toString());
 
   if (!email || !password) {
     return encodedRedirect(
       "error",
       "/sign-up",
-      "Email and password are required",
+      "Email y contraseña son requeridos",
     );
   }
 
-  const { error } = await supabase.auth.signUp({
+
+  // Guarda el usuario en la tabla auth.users
+  const { error, data: user } = await supabase.auth.signUp({
     email,
     password,
     options: {
       emailRedirectTo: `${origin}/auth/callback`,
     },
   });
+
+  const { error: userError, data: userData } = await supabase.from('users').insert({
+    id: user?.user?.id,
+    first_name: first_name,
+    last_name: last_name,
+    age: age,
+  })
+
+  console.log(userError, userData);
+
+  if (userError) {
+    console.error(userError.code + " " + userError.message);
+    return encodedRedirect("error", "/sign-up", userError.message);
+  }
 
   if (error) {
     console.error(error.code + " " + error.message);
@@ -34,7 +53,7 @@ export const signUpAction = async (formData: FormData) => {
     return encodedRedirect(
       "success",
       "/sign-up",
-      "Thanks for signing up! Please check your email for a verification link.",
+      "¡Gracias por registrarte en Alegría Gatuna! Por favor, verifica tu correo electrónico para activar tu cuenta.",
     );
   }
 };

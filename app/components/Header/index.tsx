@@ -13,6 +13,7 @@ export default function Header() {
                     height={0}
                     sizes="70vw"
                     style={{ width: '100%', height: 'auto' }}
+                    priority
                 />
             </Link>
             <h1>Hogar de paso Alegría Gatuna</h1>
