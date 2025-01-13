@@ -17,8 +17,6 @@ const EventoDetail = async ({ params }: { params: Promise<{ id: number }> }) => 
         event_author!inner(name)
     `).eq('id', id).single();
 
-    console.log(data);
-
     if (error) {
         console.log('Error en evento:', error.message);
         return (

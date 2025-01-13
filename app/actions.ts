@@ -22,7 +22,6 @@ export const signUpAction = async (formData: FormData) => {
     );
   }
 
-
   // Guarda el usuario en la tabla auth.users
   const { error, data: user } = await supabase.auth.signUp({
     email,
@@ -39,7 +38,7 @@ export const signUpAction = async (formData: FormData) => {
     age: age,
   })
 
-  console.log(userError, userData);
+  // console.log(userError, userData);
 
   if (userError) {
     console.error(userError.code + " " + userError.message);

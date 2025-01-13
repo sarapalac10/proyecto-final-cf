@@ -8,8 +8,8 @@ const GatoDetail = async ({ params, searchParams }: {
     params: { id: string },
     searchParams?: { [key: string]: string | string[] | undefined }
 }) => {
-    console.log('searchParams:', searchParams);
-    console.log('showForm value:', searchParams?.showForm);
+    // console.log('searchParams:', searchParams);
+    // console.log('showForm value:', searchParams?.showForm);
 
     const showForm = searchParams?.showForm === 'true';
     const id = params.id;
