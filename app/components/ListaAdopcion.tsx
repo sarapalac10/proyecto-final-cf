@@ -1,7 +1,8 @@
-import Image from 'next/image';
 import styles from './ListaAdopcion.module.css';
-import { Gato, gatos } from '@/app/data/gatos';
+import { gatos } from '@/app/data/gatos';
 import Link from 'next/link';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 interface TarjetaAdopcionProps {
     nombre: string;
@@ -10,11 +11,24 @@ interface TarjetaAdopcionProps {
     id: number;
 }
 
-const TarjetaAdopcion = ({ nombre, edad, imagen, id }: TarjetaAdopcionProps) => {
+interface Gato {
+    nombre: string;
+    id: number;
+    sexo: string;
+    estado: string;
+    edad: string;
+    caracteristicas: string;
+    historia: string;
+    imagen: string;
+}
 
-    console.log(nombre, edad, imagen);
+const obtenerGatos = async () => {
+    return gatos;
+}
+
+const TarjetaAdopcion = ({ nombre, imagen, id }: TarjetaAdopcionProps) => {
     return (
-        <Link href="/adopciones">
+        <Link href="/adopciones" className={styles.adoptionLink}>
             <div className={styles.adoptionCard}>
                 <img src={imagen} alt={nombre} />
                 <div className={styles.adoptionCard__info}>
@@ -26,24 +40,34 @@ const TarjetaAdopcion = ({ nombre, edad, imagen, id }: TarjetaAdopcionProps) => 
 }
 
 const ListaAdopcion = () => {
-    const obtenerGatosAleatorios = () => {
-        const gatosDesordenados = [...gatos].sort(() => Math.random() - 0.5);
-        return gatosDesordenados.slice(0, 3);
-    };
+
+    const [gatos, setGatos] = useState<Gato[]>([])
+
+    useEffect(() => {
+        const fetchGatos = async () => {
+            const data = await obtenerGatos()
+            const gatosAleatorios = data
+                .sort(() => Math.random() - 0.5)
+                .slice(0, 3)
+            setGatos(gatosAleatorios)
+        }
+
+        fetchGatos()
+    }, [])
 
     return (
         <div className={styles.adoptionList}>
-            {obtenerGatosAleatorios().map((cat: Gato, index: number) => (
+            {gatos.map((gato) => (
                 <TarjetaAdopcion
-                    key={cat.id}
-                    nombre={cat.nombre}
-                    edad={cat.edad}
-                    imagen={cat.imagen}
-                    id={cat.id}
+                    key={gato.id}
+                    nombre={gato.nombre}
+                    edad={gato.edad}
+                    imagen={gato.imagen}
+                    id={gato.id}
                 />
             ))}
         </div>
-    );
-};
+    )
+}
 
 export default ListaAdopcion;
