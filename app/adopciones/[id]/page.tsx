@@ -3,16 +3,19 @@ import GatoHeader from "../components/GatoHeader";
 import styles from "./GatoDetail.module.css";
 import GatoForm from "../components/GatoForm";
 
-
-const GatoDetail = async ({ params, searchParams }: {
-    params: { id: string },
+type Props = {
+    params: {
+        id: string
+    }
     searchParams?: { [key: string]: string | string[] | undefined }
-}) => {
-    // console.log('searchParams:', searchParams);
-    // console.log('showForm value:', searchParams?.showForm);
+}
 
-    const showForm = searchParams?.showForm === 'true';
-    const id = params.id;
+export default async function AdopcionDetallePage({ params, searchParams }: Props) {
+    const resolvedParams = await Promise.resolve(params);
+    const resolvedSearchParams = await Promise.resolve(searchParams);
+
+    const showForm = resolvedSearchParams?.showForm === 'true';
+    const id = resolvedParams.id;
     const supabase = await createClient();
 
     const { data: gato, error: gatoError } = await supabase.from('gatos').select().eq('id', id).single();
@@ -62,4 +65,3 @@ const GatoDetail = async ({ params, searchParams }: {
         </div>
     )
 }
-export default GatoDetail;
