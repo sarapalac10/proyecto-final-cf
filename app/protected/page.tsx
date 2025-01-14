@@ -8,7 +8,6 @@ export default async function ProtectedPage() {
     data: { user },
   } = await supabase.auth.getUser();
 
-  console.log(user);
   if (!user) {
     return redirect("/sign-in");
   }
