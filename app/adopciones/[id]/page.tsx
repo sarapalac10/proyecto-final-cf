@@ -4,15 +4,17 @@ import styles from "./GatoDetail.module.css";
 import GatoForm from "../components/GatoForm";
 
 
-const GatoDetail = async ({ params, searchParams }: {
+const GatoDetail = async (props: {
     params: Promise<{ id: string }>,
-    searchParams?: { [key: string]: string | string[] | undefined }
+    searchParams?: Promise<{ [key: string]: string | string[] | undefined }>
 }) => {
     // console.log('searchParams:', searchParams);
     // console.log('showForm value:', searchParams?.showForm);
 
+    const searchParams = await props.searchParams;
+    const { id } = await props.params;
     const showForm = searchParams?.showForm === 'true';
-    const { id } = await params;
+
     const supabase = await createClient();
 
     const { data: gato, error: gatoError } = await supabase.from('gatos').select().eq('id', id).single();
