@@ -64,9 +64,6 @@ export default function NavBar() {
                 <li>
                     <Link href="/donaciones">Donaciones</Link>
                 </li>
-
-            </ul>
-            <ul className={styles.navList}>
                 <li>
                     {!!user?.id && (
                         <>

@@ -1,6 +1,4 @@
-import FetchDataSteps from "@/components/tutorial/fetch-data-steps";
 import { createClient } from "@/utils/supabase/server";
-import { InfoIcon } from "lucide-react";
 import { redirect } from "next/navigation";
 
 export default async function ProtectedPage() {
@@ -10,28 +8,33 @@ export default async function ProtectedPage() {
     data: { user },
   } = await supabase.auth.getUser();
 
+  console.log(user);
   if (!user) {
     return redirect("/sign-in");
   }
 
   return (
-    <div className="flex-1 w-full flex flex-col gap-12">
-      <div className="w-full">
-        <div className="bg-accent text-sm p-3 px-5 rounded-md text-foreground flex gap-3 items-center">
-          <InfoIcon size="16" strokeWidth={2} />
-          This is a protected page that you can only see as an authenticated
-          user
+    <div className="container mx-auto p-6">
+      <h1 className="text-2xl font-bold mb-6">¡Hola {user?.email}!</h1>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+          <h2 className="text-xl font-semibold mb-3">Adopciones</h2>
+          <p className="text-gray-600 mb-4">Revisa los gatitos disponibles para adoptar</p>
+          <a href="/adopciones" className="text-blue-500 hover:text-blue-700">Ver todos los gatitos →</a>
         </div>
-      </div>
-      <div className="flex flex-col gap-2 items-start">
-        <h2 className="font-bold text-2xl mb-4">Your user details</h2>
-        <pre className="text-xs font-mono p-3 rounded border max-h-32 overflow-auto">
-          {JSON.stringify(user, null, 2)}
-        </pre>
-      </div>
-      <div>
-        <h2 className="font-bold text-2xl mb-4">Next steps</h2>
-        <FetchDataSteps />
+
+        <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+          <h2 className="text-xl font-semibold mb-3">Donaciones</h2>
+          <p className="text-gray-600 mb-4">Haz una donación para ayudar a los gatitos</p>
+          <a href="/donaciones" className="text-blue-500 hover:text-blue-700">Ir a donaciones →</a>
+        </div>
+
+        <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+          <h2 className="text-xl font-semibold mb-3">Eventos</h2>
+          <p className="text-gray-600 mb-4">Participa en eventos para ayudar a los gatitos</p>
+          <a href="/evento" className="text-blue-500 hover:text-blue-700">Ver eventos →</a>
+        </div>
       </div>
     </div>
   );

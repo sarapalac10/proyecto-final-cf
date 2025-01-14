@@ -5,6 +5,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
 }
 
 .hamburger {
@@ -49,16 +50,26 @@
     background-color: #e8eaee;
 }
 
+.navList.active {
+    display: flex;
+}
+
 .login {
     display: flex;
     align-items: center;
     gap: 0.5rem;
 }
 
-.login img{
+.login img {
     color: #287385;
-
 }
+
+.authItem {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.5rem;
+}
+
 
 @media (max-width: 768px) {
     .hamburger {

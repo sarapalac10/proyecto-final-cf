@@ -16,7 +16,7 @@ const Home = () => {
             width={0}
             height={0}
             sizes="50vw"
-            style={{ width: '100%', height: '250px', objectFit: 'cover' }}
+            style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
           />
           <h1>Bienvenidos al Hogar de paso Alegría Gatuna</h1>
           <p>Somos una organización sin fines de lucro dedicada al cuidado de gatos abandonados y maltratados. Brindamos hogar temporal, atención médica y todo el amor que necesitan.</p>
