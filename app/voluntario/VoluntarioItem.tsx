@@ -3,17 +3,9 @@ import { createClient } from "@/utils/supabase/client";
 import styles from "./styles.module.css";
 
 import { FC, useState } from "react";
+import { Tables } from "@/utils/supabase/database.types";
 
-type Volunteer = {
-    id: number;
-    name: string;
-    edad: number;
-    email: string;
-    availability: string;
-    skills: string;
-    reason: string;
-    created_at?: string;
-}
+type Volunteer = Tables<'volunteer'>
 
 type VolunteerItemProps = Volunteer & {
     onRefresh: () => void;
@@ -68,7 +60,7 @@ const VoluntarioItem: FC<VolunteerItemProps> = ({ name, email, edad, availabilit
                 {deleteLabel}
             </button>
             <button className="border-white text-sm text-black p-4 m-3 rounded-md bg-green-400 hover:bg-red-400"
-                onClick={() => handleEdit({ id, name, email, edad, availability, skills, reason })}
+                onClick={() => handleEdit({ id, name, email, edad, availability, skills, reason, created_at: '' })}
             >
                 Editar
             </button>

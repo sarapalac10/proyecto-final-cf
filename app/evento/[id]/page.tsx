@@ -17,6 +17,7 @@ const EventoDetail = async ({ params }: { params: Promise<{ id: number }> }) => 
         event_author!inner(name)
     `).eq('id', id).single();
 
+
     if (error) {
         console.log('Error en evento:', error.message);
         return (
@@ -40,7 +41,7 @@ const EventoDetail = async ({ params }: { params: Promise<{ id: number }> }) => 
             <EventoHeader />
             <div className={styles.anuncio_container}>
                 <div className={styles.anuncio_left}>
-                    <img src={data?.image} alt={data?.title} />
+                    <img src={data?.image || ''} alt={data?.title || ''} />
                 </div>
                 <div className={styles.anuncio_right}>
                     <h1> {data?.title} </h1>
@@ -48,12 +49,12 @@ const EventoDetail = async ({ params }: { params: Promise<{ id: number }> }) => 
                         <p>{data?.content}</p>
                         <span>
                             Fecha y lugar del evento:
-                            <p className={styles.tagFecha}>{dayjs(data?.event_info.date).format("DD/M/YYYY")} {data?.event_info.place}</p>
+                            <p className={styles.tagFecha}>{dayjs(data?.event_info?.date).format("DD/M/YYYY")} {data?.event_info?.place}</p>
                         </span>
                     </div>
                     <span className={styles.tagLabel}>
                         Publicado por:
-                        <span className={styles.tagValue}>{data?.event_author.name}</span>
+                        <span className={styles.tagValue}>{data?.event_author?.name}</span>
                         Fecha de publicación:
                         <span className={styles.tagValue}>{dayjs(data?.published_at).format("DD/M/YYYY")}</span>
                     </span>

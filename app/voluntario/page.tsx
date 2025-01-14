@@ -5,18 +5,10 @@ import styles from "./styles.module.css";
 import { createClient } from "@/utils/supabase/client";
 import VoluntarioItem from "./VoluntarioItem";
 import { createVolunteerAction, updateVolunteerAction } from "@/app/actions";
+import { Tables } from "@/utils/supabase/database.types";
 
 
-type Volunteer = {
-    id: number;
-    name: string;
-    edad: number;
-    email: string;
-    availability: string;
-    skills: string;
-    reason: string;
-    created_at?: string;
-}
+type Volunteer = Tables<'volunteer'>
 
 const initialState = {
     id: -1,
@@ -26,6 +18,7 @@ const initialState = {
     availability: '',
     skills: '',
     reason: '',
+    created_at: '',
 }
 
 const supabase = createClient();
@@ -83,42 +76,17 @@ const Voluntario = () => {
 
             if (error) {
                 console.log('Error en evento:', error);
-                return (
-                    <p
-                        style={{
-                            color: '#dc2626',
-                            padding: '1rem',
-                            backgroundColor: '#ece6e5',
-                            borderRadius: '0.375rem',
-                            textAlign: 'center',
-                            margin: '1rem'
-                        }}
-                    >
-                        Error al crear el voluntario
-                    </p>
-                );
+                alert('Error al crear el voluntario');
             }
 
         } else {
             // usuario existente
             await updateVolunteerAction(formData);
+            alert('¡Gracias por querer ser voluntario! Pronto nos pondremos en contacto.');
 
             if (error) {
                 console.log('Error en evento:', error);
-                return (
-                    <p
-                        style={{
-                            color: '#dc2626',
-                            padding: '1rem',
-                            backgroundColor: '#ece6e5',
-                            borderRadius: '0.375rem',
-                            textAlign: 'center',
-                            margin: '1rem'
-                        }}
-                    >
-                        Error al actualizar el voluntario
-                    </p>
-                );
+                alert('Error al actualizar el voluntario');
             }
         }
 
@@ -181,20 +149,20 @@ const Voluntario = () => {
                     <input
                         type="text"
                         name="availability"
-                        value={formValues.availability}
+                        value={formValues.availability || ''}
                         onChange={handleChange}
                     />
                     <label>Habilidades (opcional):</label>
                     <input
                         type="text"
                         name="skills"
-                        value={formValues.skills}
+                        value={formValues.skills || ''}
                         onChange={handleChange}
                     />
                     <label>Motivo para ser voluntario:</label>
                     <textarea
                         name="reason"
-                        value={formValues.reason}
+                        value={formValues.reason || ''}
                         onChange={handleChange}
                     />
                     <input type="hidden" name="id" value={formValues?.id} />

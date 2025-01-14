@@ -32,10 +32,10 @@ export const signUpAction = async (formData: FormData) => {
   });
 
   const { error: userError } = await supabase.from('users').insert({
-    id: user?.user?.id,
-    first_name: first_name,
-    last_name: last_name,
-    age: age,
+    id: user?.user?.id || '',
+    first_name: first_name || '',
+    last_name: last_name || '',
+    age: age || 0,
   })
 
   // console.log(userError, userData);
@@ -156,12 +156,12 @@ export const createVolunteerAction = async (formData: FormData) => {
     const supabase = await createClient();
 
     const { error } = await supabase.from('volunteer').insert({
-      name: formData.get('name'),
-      email: formData.get('email'),
-      edad: formData.get('edad'),
-      availability: formData.get('availability'),
-      skills: formData.get('skills'),
-      reason: formData.get('reason'),
+      name: formData.get('name') as string,
+      email: formData.get('email') as string,
+      edad: Number(formData.get('edad')) || 0,
+      availability: formData.get('availability') as string,
+      skills: formData.get('skills') as string,
+      reason: formData.get('reason') as string,
     });
 
     if (error) {
@@ -182,13 +182,13 @@ export const updateVolunteerAction = async (formData: FormData) => {
     const id = formData.get('id');
 
     const { error } = await supabase.from('volunteer').update({
-      name: formData.get('name'),
-      email: formData.get('email'),
-      edad: Number(formData.get('edad')),
-      availability: formData.get('availability'),
-      skills: formData.get('skills'),
-      reason: formData.get('reason'),
-    }).eq('id', id);
+      name: formData.get('name') as string,
+      email: formData.get('email') as string,
+      edad: Number(formData.get('edad')) || 0,
+      availability: formData.get('availability') as string,
+      skills: formData.get('skills') as string,
+      reason: formData.get('reason') as string,
+    }).eq('id', Number(id));
 
     if (error) {
       console.log(error);
