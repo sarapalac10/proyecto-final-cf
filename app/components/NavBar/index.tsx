@@ -47,9 +47,11 @@ export default function NavBar() {
                     .select("*")
                     .eq("id", authUser.user.id)
                     .single();
-
-                if (publicUser.id && !publicError) {
-                    setUser(publicUser);
+                if (publicUser && publicUser.id && !publicError) {
+                    setUser({
+                        id: publicUser.id,
+                        first_name: publicUser.first_name || undefined
+                    });
                 }
             } catch (error) {
                 console.error("Error:", error);
