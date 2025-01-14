@@ -4,14 +4,16 @@ import styles from "./GatoDetail.module.css";
 import GatoForm from "../components/GatoForm";
 
 type Props = {
-    params: Promise<{
+    params: {
         id: string;
-    }>;
-    searchParams?: Record<string, string | string[] | undefined>;
+    };
+    searchParams?: {
+        [key: string]: string | string[] | undefined;
+    };
 };
 
 export default async function AdopcionDetallePage({ params, searchParams }: Props) {
-    const resolvedParams = await params; // Resolver los parámetros
+    const resolvedParams = await params;
     const showForm = searchParams?.showForm === "true";
     const id = resolvedParams.id;
 
