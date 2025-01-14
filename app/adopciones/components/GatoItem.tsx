@@ -1,6 +1,5 @@
 import Link from "next/link";
 import styles from "./GatoItem.module.css";
-import GatoDetail from './components/GatoDetail';
 
 type GatoProps = {
     name: string;

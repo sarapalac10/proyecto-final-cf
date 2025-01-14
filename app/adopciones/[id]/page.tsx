@@ -6,7 +6,7 @@ import GatoForm from "../components/GatoForm";
 
 const GatoDetail = async (props: {
     params: Promise<{ id: string }>,
-    searchParams?: Promise<{ [key: string]: string | string[] | undefined }>
+    searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }) => {
     // console.log('searchParams:', searchParams);
     // console.log('showForm value:', searchParams?.showForm);

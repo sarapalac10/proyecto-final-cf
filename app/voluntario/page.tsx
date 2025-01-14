@@ -208,15 +208,17 @@ const Voluntario = () => {
                 </form>
             </div>
             <div className={styles.containerVoluntarios}>
-                <h1 className={styles.containerVoluntarios_h1}>Panel de Administración - Voluntarios</h1>
-                <p className={styles.containerVoluntarios_p}>Sólo para administradores - Recuerda que los voluntarios no pueden ver esta página</p>
                 {volunteers && userRole === 'admin' && volunteers.map((volunteer) => (
-                    <VoluntarioItem
-                        key={`volunteer-${volunteer.id}`}
-                        {...volunteer}
-                        onRefresh={loadVolunteers}
-                        handleEdit={handleEditVolunteer}
-                    />
+                    <>
+                        <h1 className={styles.containerVoluntarios_h1}>Panel de Administración - Voluntarios</h1>
+                        <p className={styles.containerVoluntarios_p}>Sólo para administradores - Recuerda que los voluntarios no pueden ver esta página</p>
+                        <VoluntarioItem
+                            key={`volunteer-${volunteer.id}`}
+                            {...volunteer}
+                            onRefresh={loadVolunteers}
+                            handleEdit={handleEditVolunteer}
+                        />
+                    </>
                 ))}
             </div>
         </>

@@ -26,7 +26,7 @@ const obtenerGatos = async () => {
     return gatos;
 }
 
-const TarjetaAdopcion = ({ nombre, imagen, id }: TarjetaAdopcionProps) => {
+const TarjetaAdopcion = ({ nombre, imagen }: TarjetaAdopcionProps) => {
     return (
         <Link href="/adopciones" className={styles.adoptionLink}>
             <div className={styles.adoptionCard}>

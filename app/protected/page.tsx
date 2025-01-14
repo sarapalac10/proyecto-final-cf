@@ -1,5 +1,6 @@
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
+import Link from 'next/link';
 
 export default async function ProtectedPage() {
   const supabase = await createClient();
@@ -20,19 +21,19 @@ export default async function ProtectedPage() {
         <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
           <h2 className="text-xl font-semibold mb-3">Adopciones</h2>
           <p className="text-gray-600 mb-4">Revisa los gatitos disponibles para adoptar</p>
-          <a href="/adopciones" className="text-blue-500 hover:text-blue-700">Ver todos los gatitos →</a>
+          <Link href="/adopciones" className="text-blue-500 hover:text-blue-700">Ver todos los gatitos →</Link>
         </div>
 
         <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
           <h2 className="text-xl font-semibold mb-3">Donaciones</h2>
           <p className="text-gray-600 mb-4">Haz una donación para ayudar a los gatitos</p>
-          <a href="/donaciones" className="text-blue-500 hover:text-blue-700">Ir a donaciones →</a>
+          <Link href="/donaciones" className="text-blue-500 hover:text-blue-700">Ir a donaciones →</Link>
         </div>
 
         <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
           <h2 className="text-xl font-semibold mb-3">Eventos</h2>
           <p className="text-gray-600 mb-4">Participa en eventos para ayudar a los gatitos</p>
-          <a href="/evento" className="text-blue-500 hover:text-blue-700">Ver eventos →</a>
+          <Link href="/evento" className="text-blue-500 hover:text-blue-700">Ver eventos →</Link>
         </div>
       </div>
     </div>

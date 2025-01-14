@@ -31,7 +31,7 @@ export const signUpAction = async (formData: FormData) => {
     },
   });
 
-  const { error: userError, data: userData } = await supabase.from('users').insert({
+  const { error: userError } = await supabase.from('users').insert({
     id: user?.user?.id,
     first_name: first_name,
     last_name: last_name,

@@ -1,7 +1,7 @@
 'use client'
 import styles from './GatoForm.module.css'
 import { useState } from "react";
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 
 const GatoForm = ({ onClose }: { onClose?: () => void }) => {
     const router = useRouter();
