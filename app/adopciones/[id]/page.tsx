@@ -5,32 +5,33 @@ import GatoForm from "../components/GatoForm";
 
 type Props = {
     params: {
-        id: string
-    }
-    searchParams?: { [key: string]: string | string[] | undefined }
-}
+        id: string;
+    };
+    searchParams?: Record<string, string | string[] | undefined>;
+};
 
 export default async function AdopcionDetallePage({ params, searchParams }: Props) {
-    const resolvedParams = await Promise.resolve(params);
-    const resolvedSearchParams = await Promise.resolve(searchParams);
+    const showForm = searchParams?.showForm === "true";
+    const id = params.id;
 
-    const showForm = resolvedSearchParams?.showForm === 'true';
-    const id = resolvedParams.id;
     const supabase = await createClient();
-
-    const { data: gato, error: gatoError } = await supabase.from('gatos').select().eq('id', id).single();
+    const { data: gato, error: gatoError } = await supabase
+        .from("gatos")
+        .select()
+        .eq("id", id)
+        .single();
 
     if (gatoError) {
-        console.log('Error en gato:', gatoError.message);
+        console.error("Error en gato:", gatoError.message);
         return (
             <p
                 style={{
-                    color: '#dc2626',
-                    padding: '1rem',
-                    backgroundColor: '#ece6e5',
-                    borderRadius: '0.375rem',
-                    textAlign: 'center',
-                    margin: '1rem'
+                    color: "#dc2626",
+                    padding: "1rem",
+                    backgroundColor: "#ece6e5",
+                    borderRadius: "0.375rem",
+                    textAlign: "center",
+                    margin: "1rem",
                 }}
             >
                 Error al obtener los detalles del gato
@@ -54,14 +55,15 @@ export default async function AdopcionDetallePage({ params, searchParams }: Prop
                         <p className={styles.adoptionCard__detail}>{gato?.story}</p>
                     </div>
                     <form action={`/adopciones/${id}`} method="get">
-                        <input type="hidden" name="showForm" value={showForm ? 'false' : 'true'} />
+                        <input type="hidden" name="showForm" value={showForm ? "false" : "true"} />
                         <button type="submit" className={styles.adoptionCard__button}>
-                            Si quieres adoptar a {gato?.name}, haz click aquí para {showForm ? 'cerrar' : 'llenar'} el formulario de adopción.
+                            Si quieres adoptar a {gato?.name}, haz click aquí para {showForm ? "cerrar" : "llenar"} el
+                            formulario de adopción.
                         </button>
                     </form>
                 </div>
             </div>
             {showForm && <GatoForm />}
         </div>
-    )
+    );
 }
