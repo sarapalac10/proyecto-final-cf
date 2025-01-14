@@ -34,6 +34,24 @@ const Voluntario = () => {
     const [formValues, setFormValues] = useState<Volunteer>(initialState);
     const [volunteers, setVolunteers] = useState<Volunteer[] | null>();
     const [error, setError] = useState<string | null>(null);
+    const [userRole, setUserRole] = useState<string | null>(null);
+
+    const checkUserRole = async () => {
+        try {
+            const { data: { user } } = await supabase.auth.getUser();
+            if (user) {
+                const { data: profile } = await supabase
+                    .from('profiles')
+                    .select('role')
+                    .eq('id', user.id)
+                    .single();
+
+                setUserRole(profile?.role || null);
+            }
+        } catch (error) {
+            console.error('Error al verificar el rol:', error);
+        }
+    };
 
     const loadVolunteers = async () => {
         try {
@@ -50,11 +68,11 @@ const Voluntario = () => {
             console.log(error);
         }
     };
-    // Usar un useEffect para cargar los voluntarios cuando se renderiza el componente
-    useEffect(() => {
-        loadVolunteers()
-    }, []);
 
+    useEffect(() => {
+        loadVolunteers();
+        checkUserRole();
+    }, []);
 
     const handleSubmit = async (formData: FormData) => {
 
@@ -63,12 +81,45 @@ const Voluntario = () => {
             await createVolunteerAction(formData);
             alert('¡Gracias por querer ser voluntario! Pronto nos pondremos en contacto.');
 
+            if (error) {
+                console.log('Error en evento:', error);
+                return (
+                    <p
+                        style={{
+                            color: '#dc2626',
+                            padding: '1rem',
+                            backgroundColor: '#ece6e5',
+                            borderRadius: '0.375rem',
+                            textAlign: 'center',
+                            margin: '1rem'
+                        }}
+                    >
+                        Error al crear el voluntario
+                    </p>
+                );
+            }
 
-            // si es true crear, sino mandar un error
         } else {
             // usuario existente
             await updateVolunteerAction(formData);
-            // si es true actualizar, sino mandar un error
+
+            if (error) {
+                console.log('Error en evento:', error);
+                return (
+                    <p
+                        style={{
+                            color: '#dc2626',
+                            padding: '1rem',
+                            backgroundColor: '#ece6e5',
+                            borderRadius: '0.375rem',
+                            textAlign: 'center',
+                            margin: '1rem'
+                        }}
+                    >
+                        Error al actualizar el voluntario
+                    </p>
+                );
+            }
         }
 
         setFormValues(initialState);
@@ -156,8 +207,10 @@ const Voluntario = () => {
                     </button>
                 </form>
             </div>
-            <div>
-                {volunteers && volunteers.map((volunteer) => (
+            <div className={styles.containerVoluntarios}>
+                <h1 className={styles.containerVoluntarios_h1}>Panel de Administración - Voluntarios</h1>
+                <p className={styles.containerVoluntarios_p}>Sólo para administradores - Recuerda que los voluntarios no pueden ver esta página</p>
+                {volunteers && userRole === 'admin' && volunteers.map((volunteer) => (
                     <VoluntarioItem
                         key={`volunteer-${volunteer.id}`}
                         {...volunteer}

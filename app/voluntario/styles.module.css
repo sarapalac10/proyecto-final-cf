@@ -1,6 +1,6 @@
 .containerVoluntario {
     max-width: 800px;
-    margin: 0 auto;
+    margin: 2rem auto 2rem auto;
     padding: 20px;
     background-color: #f7f9fa;
     font-family: 'Arial', sans-serif;
@@ -81,6 +81,24 @@
     flex-direction: column;
     gap: 10px;
 }
+
+.containerVoluntarios {
+    margin: 0rem auto 5rem auto;
+    padding: 2rem;
+}
+
+.containerVoluntarios_h1 {
+    color: #287385;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.containerVoluntarios_p {
+    color: #87c493;
+    font-size: 1rem;
+    text-align: center;
+}
+
 
 @media (min-width: 600px) {
     .containerVoluntario .form-grid {
