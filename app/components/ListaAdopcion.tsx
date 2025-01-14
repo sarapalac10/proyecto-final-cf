@@ -8,12 +8,11 @@ interface TarjetaAdopcionProps {
     nombre: string;
     edad: string;
     imagen: string;
-    id: string | number;
 }
 
 interface Gato {
     nombre: string;
-    id: string | number;
+    id: number;
     sexo: string;
     estado: string;
     edad: string;
@@ -63,7 +62,6 @@ const ListaAdopcion = () => {
                     nombre={gato.nombre}
                     edad={gato.edad}
                     imagen={gato.imagen}
-                    id={gato.id}
                 />
             ))}
         </div>
