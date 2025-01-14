@@ -2,7 +2,6 @@ import { createClient } from "@/utils/supabase/server";
 import GatoHeader from "../components/GatoHeader";
 import styles from "./GatoDetail.module.css";
 import GatoForm from "../components/GatoForm";
-import { PageProps } from "next/types";
 
 type Props = {
     params: {
@@ -13,6 +12,17 @@ type Props = {
     };
 };
 
+// Definir una interfaz para el tipo Gato
+interface Gato {
+    id: string;
+    name: string;
+    age: string;
+    gender: string;
+    status: string;
+    story: string;
+    image_1: string;
+}
+
 export default async function AdopcionDetallePage({ params, searchParams }: Props) {
     const showForm = searchParams?.showForm === "true";
     const id = params.id;
@@ -22,7 +32,7 @@ export default async function AdopcionDetallePage({ params, searchParams }: Prop
         .from("gatos")
         .select()
         .eq("id", id)
-        .single();
+        .single<Gato>();
 
     if (gatoError) {
         console.error("Error en gato:", gatoError.message);
