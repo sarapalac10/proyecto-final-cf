@@ -93,7 +93,7 @@ export const gatos = [
 
 export type Gato = {
     nombre: string;
-    id: number;
+    id: string | number;
     sexo: string;
     estado: string;
     edad: string;

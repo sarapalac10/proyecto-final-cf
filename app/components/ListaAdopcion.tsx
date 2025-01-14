@@ -8,12 +8,12 @@ interface TarjetaAdopcionProps {
     nombre: string;
     edad: string;
     imagen: string;
-    id: number;
+    id: string | number;
 }
 
 interface Gato {
     nombre: string;
-    id: number;
+    id: string | number;
     sexo: string;
     estado: string;
     edad: string;
