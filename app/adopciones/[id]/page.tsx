@@ -8,7 +8,9 @@ type Props = {
     params: {
         id: string;
     };
-    searchParams: Record<string, string | string[] | undefined>;
+    searchParams: {
+        [key: string]: string | string[] | undefined;
+    };
 };
 
 export default async function AdopcionDetallePage({ params, searchParams }: Props) {
