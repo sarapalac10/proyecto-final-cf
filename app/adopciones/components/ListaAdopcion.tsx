@@ -31,6 +31,11 @@ const ListaAdopcion = async () => {
                 <Gato
                     key={gato.id}
                     {...gato}
+                    id={gato.id.toString()}
+                    age={gato.age || ''}
+                    image_1={gato.image_1 || ''}
+                    look={gato.look || ''}
+                    story={gato.story || ''}
                 />
             ))}
         </div>

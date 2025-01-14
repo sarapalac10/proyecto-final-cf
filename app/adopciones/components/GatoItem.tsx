@@ -7,7 +7,6 @@ type GatoProps = {
     age: string;
     gender: string;
     image_1: string;
-    image_2: string;
     look: string;
     status: string;
     story: string;
