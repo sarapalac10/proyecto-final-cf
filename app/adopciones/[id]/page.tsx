@@ -17,7 +17,11 @@ const GatoDetail = async (props: {
 
     const supabase = await createClient();
 
-    const { data: gato, error: gatoError } = await supabase.from('gatos').select().eq('id', id).single();
+    const { data: gato, error: gatoError } = await supabase
+        .from('gatos')
+        .select()
+        .eq('id', parseInt(id))
+        .single();
 
     if (gatoError) {
         console.log('Error en gato:', gatoError.message);
@@ -42,7 +46,7 @@ const GatoDetail = async (props: {
             <GatoHeader />
             <div className={styles.adoptionCard}>
                 <div className={styles.adoptionCard__image}>
-                    <img src={gato?.image_1} alt={gato?.name} />
+                    <img src={gato?.image_1 || ''} alt={gato?.name || ''} />
                 </div>
                 <div className={styles.adoptionCard__info}>
                     <div className={styles.adoptionCard__info}>
