@@ -23,23 +23,40 @@ export default function NavBar() {
     useEffect(() => {
         const getUserData = async () => {
             try {
+                const { data: { session }, error: sessionError } = await supabase.auth.getSession()
+
+                if (sessionError) {
+                    console.error("Error de sesión:", sessionError.message);
+                    return;
+                }
+
+                if (!session) {
+                    console.log("No hay sesión activa");
+                    return;
+                }
+
                 const { data: authUser, error } = await supabase.auth.getUser();
 
                 if (error) {
-                    throw new Error(error.message);
+                    console.error("Error de autenticación:", error.message);
+                    return;
                 }
 
-                const { data: publicUser, error: publicError } = await supabase.from("users").select("*").eq("id", authUser.user.id).single();
+                const { data: publicUser, error: publicError } = await supabase
+                    .from("users")
+                    .select("*")
+                    .eq("id", authUser.user.id)
+                    .single();
 
                 if (publicUser.id && !publicError) {
                     setUser(publicUser);
                 }
             } catch (error) {
-                console.error(error);
+                console.error("Error:", error);
             }
         };
 
-        getUserData().catch(console.error);
+        getUserData();
     }, []);
 
     return (

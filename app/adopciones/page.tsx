@@ -6,7 +6,7 @@ const Adopciones = () => {
     return (
         <div className={styles.container}>
             <h1>Adopciones</h1>
-            <h2>Conoce al que podría ser tu nuevo mejor amigo</h2>
+            <h2>Descubre el amor más puro: Adopta y cambia dos historias de vida para siempre</h2>
 
             <ListaAdopcion />
         </div>
