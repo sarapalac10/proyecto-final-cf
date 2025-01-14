@@ -35,7 +35,21 @@ const Evento = async () => {
 
     return (
         <div>
-            {data?.map(anuncio => <Anuncio key={`event-${anuncio.id}`} {...anuncio} />)}
+            {data?.map(anuncio => (
+                <Anuncio
+                    key={`event-${anuncio.id}`}
+                    {...anuncio}
+                    id={anuncio.id.toString()}
+                    image={anuncio.image || ''}
+                    title={anuncio.title || ''}
+                    description={anuncio.description || ''}
+                    event_info={anuncio.event_info ?
+                        { date: anuncio.event_info.date, place: anuncio.event_info.place || '' } :
+                        { date: '', place: '' }
+                    }
+                    event_author={anuncio.event_author || { name: '' }}
+                />
+            ))}
         </div>
     )
 }
