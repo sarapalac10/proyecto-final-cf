@@ -4,15 +4,16 @@ import styles from "./GatoDetail.module.css";
 import GatoForm from "../components/GatoForm";
 
 type Props = {
-    params: {
+    params: Promise<{
         id: string;
-    };
+    }>;
     searchParams?: Record<string, string | string[] | undefined>;
 };
 
 export default async function AdopcionDetallePage({ params, searchParams }: Props) {
+    const resolvedParams = await params; // Resolver los parámetros
     const showForm = searchParams?.showForm === "true";
-    const id = params.id;
+    const id = resolvedParams.id;
 
     const supabase = await createClient();
     const { data: gato, error: gatoError } = await supabase
@@ -47,18 +48,15 @@ export default async function AdopcionDetallePage({ params, searchParams }: Prop
                     <img src={gato?.image_1} alt={gato?.name} />
                 </div>
                 <div className={styles.adoptionCard__info}>
-                    <div className={styles.adoptionCard__info}>
-                        <h3 className={styles.adoptionCard__name}>{gato?.name}</h3>
-                        <p className={styles.adoptionCard__detail}>Edad: {gato?.age}</p>
-                        <p className={styles.adoptionCard__detail}>Género: {gato?.gender}</p>
-                        <p className={styles.adoptionCard__detail}>Estado: {gato?.status}</p>
-                        <p className={styles.adoptionCard__detail}>{gato?.story}</p>
-                    </div>
+                    <h3 className={styles.adoptionCard__name}>{gato?.name}</h3>
+                    <p className={styles.adoptionCard__detail}>Edad: {gato?.age}</p>
+                    <p className={styles.adoptionCard__detail}>Género: {gato?.gender}</p>
+                    <p className={styles.adoptionCard__detail}>Estado: {gato?.status}</p>
+                    <p className={styles.adoptionCard__detail}>{gato?.story}</p>
                     <form action={`/adopciones/${id}`} method="get">
                         <input type="hidden" name="showForm" value={showForm ? "false" : "true"} />
                         <button type="submit" className={styles.adoptionCard__button}>
-                            Si quieres adoptar a {gato?.name}, haz click aquí para {showForm ? "cerrar" : "llenar"} el
-                            formulario de adopción.
+                            Si quieres adoptar a {gato?.name}, haz click aquí para {showForm ? "cerrar" : "llenar"} el formulario de adopción.
                         </button>
                     </form>
                 </div>
