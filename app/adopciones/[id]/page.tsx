@@ -2,20 +2,18 @@ import { createClient } from "@/utils/supabase/server";
 import GatoHeader from "../components/GatoHeader";
 import styles from "./GatoDetail.module.css";
 import GatoForm from "../components/GatoForm";
+import { PageProps } from "next/types";
 
 type Props = {
     params: {
         id: string;
     };
-    searchParams?: {
-        [key: string]: string | string[] | undefined;
-    };
+    searchParams: Record<string, string | string[] | undefined>;
 };
 
 export default async function AdopcionDetallePage({ params, searchParams }: Props) {
-    const resolvedParams = await params;
     const showForm = searchParams?.showForm === "true";
-    const id = resolvedParams.id;
+    const id = params.id;
 
     const supabase = await createClient();
     const { data: gato, error: gatoError } = await supabase
